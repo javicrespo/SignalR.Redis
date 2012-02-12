@@ -1,0 +1,7 @@
+[Oo]bj/
+[Bb]in/
+*.user
+*.suo
+packages/*
+artifacts/*
+msbuild.log
