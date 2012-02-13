@@ -143,8 +143,7 @@ namespace SignalR.Redis
             }
             catch (Exception ex)
             {
-                Debug.WriteLine(ex.Message);
-                throw;
+                tcs.SetException(ex);
             }
         }
 
