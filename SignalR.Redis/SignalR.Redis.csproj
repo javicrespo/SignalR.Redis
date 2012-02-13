@@ -54,6 +54,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DependencyResolverExtensions.cs" />
     <Compile Include="RedisMessageBus.cs" />
     <Compile Include="TaskAsyncHelper.cs" />
   </ItemGroup>
