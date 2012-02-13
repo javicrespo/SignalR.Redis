@@ -222,8 +222,10 @@ namespace SignalR.Redis
 
             public static Message Deserialize(byte[] data)
             {
-                var ms = new MemoryStream(data);
-                return Serializer.Deserialize<Message>(ms);
+                using (var ms = new MemoryStream(data))
+                {
+                    return Serializer.Deserialize<Message>(ms);
+                }
             }
         }
     }
