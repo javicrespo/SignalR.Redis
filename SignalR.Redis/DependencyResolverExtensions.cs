@@ -1,4 +1,5 @@
-﻿using SignalR.Infrastructure;
+﻿using System;
+using SignalR.Infrastructure;
 using SignalR.MessageBus;
 
 namespace SignalR.Redis
@@ -12,7 +13,8 @@ namespace SignalR.Redis
 
         public static IDependencyResolver UseRedis(IDependencyResolver resolver, string server, int port, string password, int db, string eventKey)
         {
-            resolver.Register(typeof(IMessageBus), () => new RedisMessageBus(server, port, password, db, eventKey, resolver));
+            var bus = new Lazy<RedisMessageBus>(() => new RedisMessageBus(server, port, password, db, eventKey, resolver));
+            resolver.Register(typeof(IMessageBus), () => bus.Value);
 
             return resolver;
         }
