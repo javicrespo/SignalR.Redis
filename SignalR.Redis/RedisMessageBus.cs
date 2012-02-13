@@ -62,7 +62,7 @@ namespace SignalR.Redis
             }
 
             // Open the connection if it isn't ready then publish to all nodes
-            return OpenConnection().Then((conn, m) => conn.Publish(_eventKey, m.GetBytes()), _connection, message);
+            return OpenConnection().Then((conn, msg) => conn.Publish(_eventKey, msg.GetBytes()), _connection, message);
         }
 
         private Task OpenConnection()
